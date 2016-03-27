@@ -28,7 +28,6 @@ act_physique = False
 continuer_act_physique = False
 
 while continuer:
-	print(window.get_at((x+20,y+41)))
 	for event in pygame.event.get():
 		if event.type == QUIT:
 			pygame.quit()
@@ -48,7 +47,6 @@ while continuer:
 			elif event.key == K_UP:
 				act_physique = True
 				temps_saut = 40
-				y_change = 2
 				act_temps_saut = False
 				touche_gris_re_saut = True
 				block_saut = True
@@ -112,6 +110,7 @@ while continuer:
 	window.fill(blanc)
 	pygame.draw.rect(window, gris,(0,440,800,60))
 	pygame.draw.rect(window, gris,(70,370,400,40))
+	pygame.draw.rect(window, gris,(300,250,200,40))
 	pygame.draw.rect(window, rouge,(x,y,40,40))
 	pygame.display.update()
 	clock.tick(30)
