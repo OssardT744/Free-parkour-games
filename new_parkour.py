@@ -7,6 +7,7 @@ pygame.init()
 window = pygame.display.set_mode((800,500))
 clock = pygame.time.Clock()
 
+#test commit
 
 blanc = pygame.Color(255,255,255)
 rouge = pygame.Color(230,0,0)
