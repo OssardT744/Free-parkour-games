@@ -27,6 +27,8 @@ cpt_continuer_tomber_physique = 0
 act_physique = False
 continuer_act_physique = False
 
+cpt_boucle_phy = 0
+
 while continuer:
 	for event in pygame.event.get():
 		if event.type == QUIT:
@@ -75,7 +77,7 @@ while continuer:
 	
 	if act_physique:
 		cpt_continuer_tomber_physique += 1
-		if cpt_continuer_tomber_physique == 3:
+		if cpt_continuer_tomber_physique == 2:
 			y_change += 1
 			cpt_continuer_tomber_physique = 0
 	
@@ -89,8 +91,20 @@ while continuer:
 			cpt_continuer_tomber_physique = 0
 			act_temps_saut = False
 	
-		
 	
+	if window.get_at((x-2,y+7)) == gris or window.get_at((x-2,y+20)) == gris or window.get_at((x-2,y+35)) == gris:
+		x += 3
+		
+	if window.get_at((x+42,y+7)) == gris or window.get_at((x+42,y+20)) == gris or window.get_at((x+42,y+35)) == gris:
+		x -= 3
+	
+	if window.get_at((x,y-3)) == gris or window.get_at((x+21,y-3)) == gris or window.get_at((x+42,y-3)) == gris:
+		if cpt_boucle_phy == 1:
+			y += 3
+			cpt_boucle_phy = 0
+		
+		cpt_boucle_phy += 1
+		
 	x += x_change
 	y += y_change
 	
@@ -109,8 +123,8 @@ while continuer:
 	
 	window.fill(blanc)
 	pygame.draw.rect(window, gris,(0,440,800,60))
-	pygame.draw.rect(window, gris,(70,370,400,40))
-	pygame.draw.rect(window, gris,(300,250,200,40))
+	pygame.draw.rect(window, gris,(90,370,400,15))
+	pygame.draw.rect(window, gris,(300,250,200,15))
 	pygame.draw.rect(window, rouge,(x,y,40,40))
 	pygame.display.update()
 	clock.tick(30)
